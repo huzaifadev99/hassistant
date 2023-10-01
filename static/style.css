@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+footer{
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 15dvh;
+    width: 100dvw;
+    position: fixed;
+    bottom: 0px;
+    gap: 2px;
+}
+button{
+    /* width: 100px;
+    height: 100px;
+    padding: 20px; */
+    padding: 12px 15px;
+    background-color: rgba(39, 190, 255, 0.902);
+    border: 2px solid rgba(39, 190, 255, 0.902);
+    border-radius: 5px;
+
+
+}
+button:hover{
+    background-color: rgba(39, 190, 255, 0.582);
+    cursor: pointer
+}
+button:focus{
+    background-color: rgba(39, 190, 255, 0.582);
+}
+hr{
+    color: red;
+}
+input{
+    width: 40dvw;
+    padding: 12px 10px;
+    font-family: sans-serif;
+    /* font-size: 1rem; */
+    border-radius: px;
+}
+main{
+    padding: 20px;
+    height: 80dvh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card{
+    background-color: skyblue;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+strong{
+    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
+}
+.ans{
+    padding-top: 8px;
+   border-top: 2px solid white;
+}

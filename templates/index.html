@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <!-- <div id="v"></div>
+        <div class="card">
+            <div id="question"><strong>Prompt : </strong><div id="prompt"></div></div>
+            
+            <div id="ans"><strong>Hassist : </strong><div id="hassist"></div></div>
+        </div> -->
+        <!-- <div class="card">
+            <div id="question"><strong>Prompt : </strong>this is my new flask app i thought you like it</div>
+            <hr>
+            <div id="ans"><strong>Hassist : </strong>That's great! I'm glad you've created a new Flask app. Could you
+                please provide more information about your app?</div>
+        </div>
+        <div class="card">
+            <div id="question"><strong>Prompt : </strong>this is my new flask app i thought you like it</div>
+            <hr>
+            <div id="ans"><strong>Hassist : </strong>That's great! I'm glad you've created a new Flask app. Could you
+                please provide more information about your app?</div>
+        </div>
+        <div class="card">
+            <div id="question"><strong>Prompt : </strong>this is my new flask app i thought you like it</div>
+            <hr>
+            <div id="ans"><strong>Hassist : </strong>That's great! I'm glad you've created a new Flask app. Could you
+                please provide more information about your app?</div>
+        </div> -->
+    </main>
+    <footer>
+        <input type="text" name="" id="insert">
+        <button onclick="run()">
+            <i class="fa-regular fa-paper-plane" style="color: #ffffff;"></i>
+        </button>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function run() {
+            var inputData = document.getElementById('insert').value;
+            $.ajax({
+                url: '/server',
+                type: 'POST',
+                data: { input_data: inputData },
+                success: function (response) {
+                    console.log("success");
+                    createCard(inputData, response.response); // Create a new card with the received data
+                    let utterance = new SpeechSynthesisUtterance(response.response)
+                    speechSynthesis.speak(utterance);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function createCard(prompt, response) {
+            var main = document.querySelector('main');
+            var card = document.createElement('div');
+            card.className = 'card'; // Add your CSS class for the card here
+
+            var question = document.createElement('div');
+            question.className = 'question';
+            question.innerHTML = '<strong>Prompt : </strong>' + prompt + "\n";
+            card.appendChild(question);
+
+            var ans = document.createElement('div');
+            ans.className = 'ans';
+            ans.innerHTML = '<strong>Hassist : </strong>' + response;
+            card.appendChild(ans);
+
+            main.appendChild(card);
+        }
+    </script>
+</body>
+
+</html>
